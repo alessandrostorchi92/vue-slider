@@ -44,8 +44,12 @@
     opacity: 0.5;
 }
 
+.slider-container {
+    border: 1px solid black;
+}
+
 .slider-container .img .thumb.active {
-border: 1px solid white;
+border: 3px solid white;
 }
 
 .thumb img {

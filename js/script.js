@@ -12,6 +12,8 @@
 // Procedimento logico:
 
 // 1) Aggiungo al Data() una variabile activeImageIndex che mio tenga traccia dell'indice dell'immagine attiva
+// 2) Utilizzo la direttiva v-for per stampare le immagini in html all'interno dello slider più grande 
+// 3) Mostro l'immagine con l'indice attivo mediante la direttiva v-show
 
 "use script"
 

@@ -15,27 +15,22 @@
 
         <div class="container">
             <div class="slider-wrapper" tabindex="0">
-
-                <div class="item">
-                    <img src="img/01.webp" alt="Spiderman" />
+                <div v-for="(itemImg, i) in slides"  
+                class="item slider-container" v-bind:class="activeImageIndex === i ? 'active':''" 
+                v-show="activeImageIndex === i">
+                <img v-bind:src="itemImg.image" v-bind:alt="'Immagine#' + i">
                     <div class="text">
-                        <h3>Spiderman</h3>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit
-                            tempore aliquid deleniti aut
-                            veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum
-                            corporis.
-                        </p>
+                        <h3>{{ slides.title }}</h3>
+                        <p>{{ slides.text }}</p>
                     </div>
                 </div>
 
                 <!-- I discendenti del div che contiene la variabile i hanno accesso agli argomenti del padre -->
-                <div class="thumbs"> 
-                    <div class="prev" @click="onPreviewClick(i)" ></div>
+                <div class="thumbs">
+                    <div class="prev" @click="onPreviewClick(i)"></div>
                     <div class="next" @click="onNextClick(i)"></div>
                     <div class="thumb slider-container" v-for="(itemImg, i) in slides"
-                    v-bind:class="activeImageIndex === i ? 'active' : ''"
-                    @click="onThumbClick(i)">
+                        v-bind:class="activeImageIndex === i ? 'active' : ''" @click="onThumbClick(i)">
                         <img v-bind:src="itemImg.image" v-bind:alt="'Immagine#' + i">
                     </div>
 
