@@ -1,10 +1,17 @@
 
 // Consegna:Partendo dal markup della versione svolta rifai lo slider, ma questa volta usando Vue
 
+// Procedimento logico:
+
 // 1) Imposto VueJs: - inserisco script nell'header e creo il div con id sotto il tag body dell'html, - dentro il file js, eseguo la funzione Vue.createApp().mount(”#app”)
 // 2) Inserisco l'array di oggetti "slides" all'interno del return della funzione data()
-// 3) Aggiungo al tag <div class="thumbs"></div> il v-for 
+// 3) Aggiungo al tag <div class="thumbs"></div> il ciclo v-for per aggiungere dinamicamente le immagini al file html
 
+// Bonus: Al click su una thumb, visualizzare in grande l’immagine corrispondente
+
+// Procedimento logico:
+
+// 1) Aggiungo al Data() una variabile activeImageIndex che mio tenga traccia dell'indice dell'immagine attiva
 
 "use script"
 
@@ -37,10 +44,35 @@ Vue.createApp({
                 }
             ],
 
+            // Questa variabile  mi tiene traccia dell'indice dell'immagine attiva
+
+            activeImageIndex: 0,
+
         }
     },
-    methods: {
 
+    methods:{
+
+        onThumbClick(i) {
+            console.log(i);
+            this.activeImageIndex = i;
+        },
+
+        onPreviewClick(i) {
+            this.activeImageIndex--
+            if(this.activeImageIndex < 0) {
+                this.activeImageIndex = this.slides.length - 1;
+            }
+
+        },
+
+        onNextClick(i) {
+            this.activeImageIndex++
+            if(this.activeImageIndex > this.slides.length - 1) {
+                this.activeImageIndex = 0; 
+            }
+        },
+        
     }
 
 }).mount("#app")

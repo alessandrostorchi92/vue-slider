@@ -29,12 +29,16 @@
                     </div>
                 </div>
 
-                <div class="thumbs">
-                    <div class="prev"></div>
-                    <div class="next"></div>
-                    <div class="thumb " v-for="(itemImg, i) in slides" >
+                <!-- I discendenti del div che contiene la variabile i hanno accesso agli argomenti del padre -->
+                <div class="thumbs"> 
+                    <div class="prev" @click="onPreviewClick(i)" ></div>
+                    <div class="next" @click="onNextClick(i)"></div>
+                    <div class="thumb slider-container" v-for="(itemImg, i) in slides"
+                    v-bind:class="activeImageIndex === i ? 'active' : ''"
+                    @click="onThumbClick(i)">
                         <img v-bind:src="itemImg.image" v-bind:alt="'Immagine#' + i">
                     </div>
+
                 </div>
 
             </div>
